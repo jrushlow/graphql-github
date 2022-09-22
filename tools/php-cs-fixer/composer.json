@@ -1,0 +1,16 @@
+{
+    "name": "jrushlow/graphql-tools",
+    "description": "Nothing to see here",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jesse Rushlow",
+            "email": "jr@rushlow.dev"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "friendsofphp/php-cs-fixer": "^3.11"
+    }
+}

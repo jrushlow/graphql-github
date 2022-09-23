@@ -121,14 +121,14 @@ class ToStringTest extends TestCase
 
     public function testOperationWithEmptySelectionSet(): void
     {
-        $operation = new Operation(OperationType::QUERY, new SelectionSet([]));
+        $operation = new Operation(OperationType::Query, new SelectionSet([]));
 
         self::assertSame('Query { }', (string) $operation);
     }
 
     public function testOperationWithSelectionSet(): void
     {
-        $operation = new Operation(OperationType::QUERY, new SelectionSet([
+        $operation = new Operation(OperationType::Query, new SelectionSet([
             new Selection(new Field('GraphQL')),
         ]));
 
@@ -144,7 +144,7 @@ class ToStringTest extends TestCase
 
     public function testDocumentWithOneOperations(): void
     {
-        $document = new Document([new Operation(OperationType::QUERY, new SelectionSet([]))]);
+        $document = new Document([new Operation(OperationType::Query, new SelectionSet([]))]);
 
         self::assertSame('{ Query { } }', (string) $document);
     }
@@ -152,8 +152,8 @@ class ToStringTest extends TestCase
     public function testDocumentWithMultipleOperations(): void
     {
         $document = new Document([
-            new Operation(OperationType::QUERY, new SelectionSet([])),
-            new Operation(OperationType::QUERY, new SelectionSet([])),
+            new Operation(OperationType::Query, new SelectionSet([])),
+            new Operation(OperationType::Query, new SelectionSet([])),
         ]);
 
         self::assertSame('{ Query { } Query { } }', (string) $document);

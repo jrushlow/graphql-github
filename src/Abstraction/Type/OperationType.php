@@ -7,5 +7,5 @@ namespace Jrushlow\GraphqlGithub\Abstraction\Type;
  */
 enum OperationType
 {
-    case QUERY;
+    case Query;
 }

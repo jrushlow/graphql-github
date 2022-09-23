@@ -15,6 +15,6 @@ class Operation implements \Stringable
 
     public function __toString()
     {
-        return sprintf('%s %s', $this->type->name, $this->selectionSet);
+        return sprintf('%s %s', $this->type->name, (string) $this->selectionSet);
     }
 }

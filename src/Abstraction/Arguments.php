@@ -7,6 +7,9 @@ namespace Jrushlow\GraphqlGithub\Abstraction;
  */
 class Arguments implements \Stringable
 {
+    /**
+     * @param array<int, Argument> $arguments
+     */
     public function __construct(
         public readonly array $arguments,
     ) {

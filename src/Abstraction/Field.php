@@ -19,7 +19,7 @@ class Field implements \Stringable
         $string = null !== $this->alias ? "$this->alias: $this->name" : $this->name;
 
         if (null !== $this->arguments) {
-            $string .= '('.$this->arguments->__toString().')';
+            $string .= $this->arguments->__toString();
         }
 
         return $string;

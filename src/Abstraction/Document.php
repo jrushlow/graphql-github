@@ -2,36 +2,28 @@
 
 namespace Jrushlow\GraphqlGithub\Abstraction;
 
-use Jrushlow\GraphqlGithub\Abstraction\Operations\Mutation;
-use Jrushlow\GraphqlGithub\Abstraction\Operations\Query;
-
 /**
- * The top level GraphQL Document
+ * The top level GraphQL Document.
  *
  * @author Jesse Rushlow <jr@rushlow.dev>
  */
-class Document
+class Document implements \Stringable
 {
+    /**
+     * @param array<int, Operation> $definitions
+     */
     public function __construct(
-        private array $definitions = [],
+        public readonly array $definitions = [],
     ) {
         foreach ($this->definitions as $definition) {
-            if (!$definition instanceof Mutation && !$definition instanceof Query) {
-                throw new \RuntimeException('Only Mutations and Queries operation accepted.');
+            if (!$definition instanceof Operation) {
+                throw new \RuntimeException('Invalid Operation.');
             }
         }
     }
 
-    /** @return array<int, \Jrushlow\GraphqlGithub\Abstraction\Operations\Query|\Jrushlow\GraphqlGithub\Abstraction\Operations\Mutation> */
-    public function getDefinitions(): array
+    public function __toString(): string
     {
-        return $this->definitions;
-    }
-
-    public function addDefinition(Mutation|Query $definition): self
-    {
-        $this->definitions[] = $definition;
-
-        return $this;
+        return empty($this->definitions) ? '{ }' : sprintf('{ %s }', implode(' ', $this->definitions));
     }
 }

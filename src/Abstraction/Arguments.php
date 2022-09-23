@@ -19,7 +19,6 @@ class Arguments implements \Stringable
 
     public function __toString(): string
     {
-
-        return implode(', ', $this->arguments);
+        return sprintf('(%s)', implode(', ', $this->arguments));
     }
 }

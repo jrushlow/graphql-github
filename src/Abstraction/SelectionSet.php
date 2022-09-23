@@ -22,7 +22,6 @@ class SelectionSet implements \Stringable
 
     public function __toString(): string
     {
-
-        return implode('', $this->selections);
+        return empty($this->selections) ? '{ }' : sprintf('{ %s }', implode(' ', $this->selections));
     }
 }

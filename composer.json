@@ -15,6 +15,11 @@
             "Jrushlow\\GraphqlGithub\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Jrushlow\\GraphqlGithubTests\\": "tests/"
+        }
+    },
     "require": {
         "php": ">=8.1",
         "ext-json": "*"

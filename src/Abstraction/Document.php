@@ -7,7 +7,7 @@ namespace Jrushlow\GraphqlGithub\Abstraction;
  *
  * @author Jesse Rushlow <jr@rushlow.dev>
  */
-class Document implements \Stringable
+class Document implements \Stringable, \JsonSerializable
 {
     /**
      * @param array<int, Operation> $definitions
@@ -25,5 +25,16 @@ class Document implements \Stringable
     public function __toString(): string
     {
         return empty($this->definitions) ? '{ }' : sprintf('{ %s }', implode(' ', $this->definitions));
+    }
+
+    public function jsonSerialize(): array
+    {
+        $json = [];
+
+        foreach ($this->definitions as $definition) {
+            $json[$definition->type->name] = (string) $definition->selectionSet;
+        }
+
+        return $json;
     }
 }

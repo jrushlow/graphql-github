@@ -8,4 +8,5 @@ namespace Jrushlow\GraphqlGithub\Abstraction\Type;
 enum OperationType
 {
     case Query;
+    case Mutation;
 }

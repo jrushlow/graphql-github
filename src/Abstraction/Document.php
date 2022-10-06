@@ -32,7 +32,7 @@ class Document implements \Stringable, \JsonSerializable
         $json = [];
 
         foreach ($this->definitions as $definition) {
-            $json[$definition->type->name] = (string) $definition->selectionSet;
+            $json[strtolower($definition->type->name)] = (string) $definition->selectionSet;
         }
 
         return $json;

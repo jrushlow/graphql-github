@@ -11,6 +11,7 @@ class Field implements \Stringable
         public readonly string $name,
         public readonly ?string $alias = null,
         public readonly ?Arguments $arguments = null,
+        public readonly ?SelectionSet $selectionSet = null,
     ) {
     }
 
@@ -20,6 +21,10 @@ class Field implements \Stringable
 
         if (null !== $this->arguments) {
             $string .= $this->arguments->__toString();
+        }
+
+        if (null !== $this->selectionSet) {
+            $string .= sprintf(' %s', $this->selectionSet);
         }
 
         return $string;

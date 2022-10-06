@@ -55,6 +55,15 @@ class ToStringTest extends TestCase
         self::assertSame('firstName', (string) $field);
     }
 
+    public function testFieldWithSelectionSet(): void
+    {
+        $selections = new SelectionSet([new Selection(new Field('login'))]);
+
+        $field = new Field(name: 'firstName', selectionSet: $selections);
+
+        self::assertSame('firstName { login }', (string) $field);
+    }
+
     public function testFieldWithArgument(): void
     {
         $field = new Field(
